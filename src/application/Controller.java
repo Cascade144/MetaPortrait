@@ -4,45 +4,66 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ScrollEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class Controller implements Initializable{
 	
 	@FXML
-	private ImageView ImportedImageView;
+	private ImageView importedImageView;
+	@FXML
+	private ScrollPane metaScrollPane;
+	
+	private File importedFile;
+	private ImageHandler imageHandler;
+	
+	//No args constructor
+	public Controller() {
+		
+	}
 	
 	@SuppressWarnings("unused")
 	@FXML
 	private void ImportFile(ActionEvent e) {
 		FileChooser fileImporter = new FileChooser();
 		fileImporter.setTitle("Open Image File");
-		File imageFile = fileImporter.showOpenDialog(new Stage());
-		if(imageFile == null) {
+		importedFile = fileImporter.showOpenDialog(new Stage());
+		if(importedFile == null) {
+			System.err.println("Unable to open the file.");
 			return;
 		}
-		//Open file in image viewer for user
-		Image importedImage = new Image(imageFile.toURI().toString());
-		ImportedImageView.setImage(importedImage);
+		imageHandler.setImportedFile(importedFile);
+		Image importedImage = new Image(importedFile.toURI().toString());
+		importedImageView.setImage(importedImage);	
+		imageHandler.determineImageType();
 	}
 	
 	@FXML
 	private void CloseImportedFile(ActionEvent e) {
 		//TODO find a way to close the file
-		ImportedImageView.setImage(null);
+		importedImageView.setImage(null);
+		imageHandler.closeFile();
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
 	}
 	
+	//Getters and setters
 	
+	public void setImageHandler(ImageHandler imageHandler) {
+		this.imageHandler = imageHandler;
+	}
 }
 

@@ -3,22 +3,25 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="246.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <center>
-            <ImageView fx:id="ImportedImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-         </center>
          <top>
             <MenuBar fx:id="MetaPortraitMenu" prefHeight="25.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
                     <MenuItem fx:id="OpenFileMenu" mnemonicParsing="false" onAction="#ImportFile" text="Open" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem fx:id="CloseFileMenu" mnemonicParsing="false" onAction="#CloseImportedFile" text="Close" />
                   </items>
                 </Menu>
@@ -35,6 +38,28 @@
               </menus>
             </MenuBar>
          </top>
+         <center>
+            <ScrollPane fx:id="metaScrollPane" fitToHeight="true" fitToWidth="true" pannable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <content>
+                  <ImageView fx:id="importedImageView" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Desktop/Small-mario.png" />
+                     </image></ImageView>
+               </content>
+            </ScrollPane>
+         </center>
+         <right>
+            <AnchorPane BorderPane.alignment="CENTER">
+               <children>
+                  <TableView prefHeight="771.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn editable="false" prefWidth="101.0" sortable="false" text="Properties" />
+                      <TableColumn prefWidth="98.0" sortable="false" text="Data" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </right>
       </BorderPane>
    </children>
 </AnchorPane>
