@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
 
+
 public class ImageHandler {
 	private File importedFile;
 	private byte[] byteData;
