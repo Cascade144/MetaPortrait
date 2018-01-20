@@ -8,7 +8,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -42,10 +41,7 @@
          <center>
             <ScrollPane fx:id="metaScrollPane" fitToHeight="true" fitToWidth="true" pannable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <content>
-                  <ImageView fx:id="importedImageView" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../Desktop/Small-mario.png" />
-                     </image></ImageView>
+                  <ImageView fx:id="importedImageView" pickOnBounds="true" preserveRatio="true" />
                </content>
             </ScrollPane>
          </center>

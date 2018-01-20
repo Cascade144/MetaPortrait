@@ -46,11 +46,12 @@ public class Controller implements Initializable{
 		fileImporter.setTitle("Open Image File");
 		importedFile = fileImporter.showOpenDialog(new Stage());
 		if(importedFile == null) {
-			System.err.println("Unable to open the file.");
+			System.err.println("Unable to open the file...");
+			System.out.println("Unable to open the file...");
 			return;
 		}
 		imageHandler.setImportedFile(importedFile);
-		System.out.printf("New file imported %s\n", importedFile.toURI().toString());
+		System.out.printf("Imported %s\n", importedFile.toURI().toString());
 		Image importedImage = new Image(importedFile.toURI().toString());
 		importedImageView.setImage(importedImage);	
 		imageHandler.determineImageType();
@@ -61,6 +62,7 @@ public class Controller implements Initializable{
 		//TODO find a way to close the file
 		importedImageView.setImage(null);
 		imageHandler.closeFile();
+		System.out.println("Closed file...");
 	}
 	
 	public void appendText(String str) {
